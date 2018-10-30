@@ -1,0 +1,72 @@
+﻿@model List<Models.PlayerIndexModel>
+
+    @{
+    ViewBag.Title = "Index";
+    }
+
+    <h2>Player Index</h2>
+
+    <div class="panel panel-default">
+        <div class="panel-content">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model[0].PlayerId)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model[0].PlayerName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model[0].ActiveCharatcerName)
+                        </th>
+                        <th>
+                            Character Index
+                        </th>
+                        <th>
+                            Edit Player
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlayerId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlayerName)                            
+                        </td>
+                        <td>
+                            @if (item.ActiveCharacterId != null)
+                            {
+                                @Html.ActionLink(item.ActiveCharatcerName, "Details", "Character", new { Id = item.ActiveCharacterId }, null)
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Create Character", "Create", "Character", new { Id = item.PlayerId }, null)
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("View Characters", "Index", "Character", new { Id = item.PlayerId}, null)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { Id = item.PlayerId })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="form-horizontal clearfix">
+                <div class="form-group">
+
+                    <div class="col-md-1 pull-right">
+                        <input type="button" class="btn btn-default" value="Create" onclick="location.href='@Url.Action("Create","Player")'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
