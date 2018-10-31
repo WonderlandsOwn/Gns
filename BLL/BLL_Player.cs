@@ -10,31 +10,31 @@ namespace BLL
 {
     public class BLL_Player
     {
-        PlayerRepository playerDetailRepository;
+        DAL_Player PlayerRepository;
 
         public BLL_Player()
         {
-            playerDetailRepository = new PlayerRepository();
+            PlayerRepository = new DAL_Player();
         }
 
-        public List<PlayerIndexModel>GetAllPlayers()
+        public List<PlayerIndexModel>GetCompletePlayerIndex()
         {
-            return playerDetailRepository.GetAllPlayersAsIndexModel();
+            return PlayerRepository.GetAllPlayersAsIndexModel();
         }
 
         public bool CreatePlayer(PlayerCreateModel createModel)
         {
-            return playerDetailRepository.CreateNewPlayer(createModel);
+            return PlayerRepository.CreateNewPlayer(createModel);
         }
 
         public PlayerEditModel GetPlayerForEdit(int id)
         {
-            return playerDetailRepository.GetPlayerEditModel(id);
+            return PlayerRepository.GetPlayerEditModel(id);
         }
 
         public bool EditPlayer(PlayerEditModel editModel)
         {
-            return playerDetailRepository.UpdatePlayerDetail(editModel);
+            return PlayerRepository.UpdatePlayerDetail(editModel);
         }
     }
 }

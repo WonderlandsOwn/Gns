@@ -13,7 +13,7 @@ namespace MVC.Controllers
         public ActionResult Index()
         {
             List<PlayerIndexModel> indexModel = new List<PlayerIndexModel>();
-            indexModel.AddRange(new BLL_Player().GetAllPlayers());
+            indexModel.AddRange(new BLL_Player().GetCompletePlayerIndex());
             return View(indexModel);
         }
 

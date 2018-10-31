@@ -29,8 +29,9 @@ namespace GnsEntities
             ToTable("Character", schema);
             HasKey(x => x.CharacterId);
 
-            Property(x => x.CharacterId).HasColumnName(@"CharacterId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.CharacterName).HasColumnName(@"CharacterName").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.CharacterId).HasColumnName(@"CharacterId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.CharacterPlayerId).HasColumnName(@"CharacterPlayerId").HasColumnType("int").IsOptional();
+            Property(x => x.CharacterName).HasColumnName(@"CharacterName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
             Property(x => x.CharacterRaceId).HasColumnName(@"CharacterRaceId").HasColumnType("int").IsRequired();
             Property(x => x.CharacterPrimaryArchtypeId).HasColumnName(@"CharacterPrimaryArchtypeId").HasColumnType("int").IsRequired();
             Property(x => x.CharacterSecondaryArchtypeId).HasColumnName(@"CharacterSecondaryArchtypeId").HasColumnType("int").IsOptional();
@@ -42,14 +43,9 @@ namespace GnsEntities
 
             // Foreign keys
             HasOptional(a => a.CharacterSecondaryArchtype).WithMany(b => b.Characters_CharacterSecondaryArchtypeId).HasForeignKey(c => c.CharacterSecondaryArchtypeId).WillCascadeOnDelete(false); // FK_Character_Secondary_Archtype
+            HasOptional(a => a.Player).WithMany(b => b.Characters).HasForeignKey(c => c.CharacterPlayerId).WillCascadeOnDelete(false); // FK_Character_Player
             HasRequired(a => a.CharacterPrimaryArchtype).WithMany(b => b.Characters_CharacterPrimaryArchtypeId).HasForeignKey(c => c.CharacterPrimaryArchtypeId).WillCascadeOnDelete(false); // FK_Character_Primary_Archtype
             HasRequired(a => a.Race).WithMany(b => b.Characters).HasForeignKey(c => c.CharacterRaceId).WillCascadeOnDelete(false); // FK_Character_Race
-            HasMany(t => t.Players).WithMany(t => t.Characters).Map(m =>
-            {
-                m.ToTable("PlayerCharacterList", "dbo");
-                m.MapLeftKey("CharacterId");
-                m.MapRightKey("PlayerId");
-            });
         }
     }
 

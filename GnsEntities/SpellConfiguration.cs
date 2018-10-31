@@ -29,14 +29,8 @@ namespace GnsEntities
             ToTable("Spell", schema);
             HasKey(x => x.SpellId);
 
-            Property(x => x.SpellId).HasColumnName(@"SpellId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.SpellName).HasColumnName(@"SpellName").HasColumnType("nchar").IsRequired().IsFixedLength().HasMaxLength(24);
-            Property(x => x.SpellDamage).HasColumnName(@"SpellDamage").HasColumnType("int").IsOptional();
-            Property(x => x.SpellDamageTypeId).HasColumnName(@"SpellDamageTypeId").HasColumnType("int").IsOptional();
-            Property(x => x.SpellCoolDown).HasColumnName(@"SpellCoolDown").HasColumnType("int").IsRequired();
-            Property(x => x.SpellCost).HasColumnName(@"SpellCost").HasColumnType("int").IsRequired();
-            Property(x => x.SpellResourceId).HasColumnName(@"SpellResourceId").HasColumnType("int").IsOptional();
-            Property(x => x.SpellTargetId).HasColumnName(@"SpellTargetId").HasColumnType("int").IsRequired();
+            Property(x => x.SpellId).HasColumnName(@"SpellId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.SpellName).HasColumnName(@"SpellName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
         }
     }
 

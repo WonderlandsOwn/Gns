@@ -30,7 +30,11 @@ namespace GnsEntities
             HasKey(x => x.ArchtypeId);
 
             Property(x => x.ArchtypeId).HasColumnName(@"ArchtypeId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.ArchtypeDescription).HasColumnName(@"ArchtypeDescription").HasColumnType("nchar").IsOptional().IsFixedLength().HasMaxLength(100);
+            Property(x => x.ArchtypeShortDescription).HasColumnName(@"ArchtypeShortDescription").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.ArchtypeDescription).HasColumnName(@"ArchtypeDescription").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(100);
+
+            // Foreign keys
+            HasRequired(a => a.Archtype).WithOptional(b => b.ArchtypeDetail).WillCascadeOnDelete(false); // FK_ArchtypeDetail_ArchType
         }
     }
 

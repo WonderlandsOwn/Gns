@@ -18,19 +18,18 @@ namespace GnsEntities
     public interface IGnsDbContext : System.IDisposable
     {
         System.Data.Entity.DbSet<Archtype> Archtypes { get; set; } // Archtype
+        System.Data.Entity.DbSet<ArchtypeBonu> ArchtypeBonus { get; set; } // ArchtypeBonus
         System.Data.Entity.DbSet<ArchtypeDetail> ArchtypeDetails { get; set; } // ArchtypeDetail
         System.Data.Entity.DbSet<ArchtypeSpellList> ArchtypeSpellLists { get; set; } // ArchtypeSpellList
         System.Data.Entity.DbSet<Character> Characters { get; set; } // Character
-        System.Data.Entity.DbSet<CharacterDetail> CharacterDetails { get; set; } // CharacterDetail
-        System.Data.Entity.DbSet<CharacterInventory> CharacterInventories { get; set; } // CharacterInventory
         System.Data.Entity.DbSet<CharacterStatu> CharacterStatus { get; set; } // CharacterStatus
         System.Data.Entity.DbSet<Player> Players { get; set; } // Player
-        System.Data.Entity.DbSet<PlayerDetail> PlayerDetails { get; set; } // PlayerDetail
-        System.Data.Entity.DbSet<PlayerInventory> PlayerInventories { get; set; } // PlayerInventory
+        System.Data.Entity.DbSet<PlayerDeck> PlayerDecks { get; set; } // PlayerDeck
         System.Data.Entity.DbSet<Race> Races { get; set; } // Race
+        System.Data.Entity.DbSet<RaceBonu> RaceBonus { get; set; } // RaceBonus
         System.Data.Entity.DbSet<RaceDetail> RaceDetails { get; set; } // RaceDetail
-        System.Data.Entity.DbSet<Resource> Resources { get; set; } // Resource
         System.Data.Entity.DbSet<Spell> Spells { get; set; } // Spell
+        System.Data.Entity.DbSet<SpellDetail> SpellDetails { get; set; } // SpellDetail
 
         int SaveChanges();
         System.Threading.Tasks.Task<int> SaveChangesAsync();

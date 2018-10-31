@@ -29,8 +29,12 @@ namespace GnsEntities
             ToTable("Player", schema);
             HasKey(x => x.PlayerId);
 
-            Property(x => x.PlayerId).HasColumnName(@"PlayerId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.PlayerId).HasColumnName(@"PlayerId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.PlayerName).HasColumnName(@"PlayerName").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.PlayerActiveCharacterId).HasColumnName(@"PlayerActiveCharacterID").HasColumnType("int").IsOptional();
+
+            // Foreign keys
+            HasOptional(a => a.Character).WithMany(b => b.Players).HasForeignKey(c => c.PlayerActiveCharacterId).WillCascadeOnDelete(false); // FK_Player_Character
         }
     }
 

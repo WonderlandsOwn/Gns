@@ -20,16 +20,14 @@ namespace GnsEntities
     public class Spell
     {
         public int SpellId { get; set; } // SpellId (Primary key)
-        public string SpellName { get; set; } // SpellName (length: 24)
-        public int? SpellDamage { get; set; } // SpellDamage
-        public int? SpellDamageTypeId { get; set; } // SpellDamageTypeId
-        public int SpellCoolDown { get; set; } // SpellCoolDown
-        public int SpellCost { get; set; } // SpellCost
-        public int? SpellResourceId { get; set; } // SpellResourceId
-        public int SpellTargetId { get; set; } // SpellTargetId
+        public string SpellName { get; set; } // SpellName (length: 50)
 
         // Reverse navigation
 
+        /// <summary>
+        /// Parent (One-to-One) Spell pointed by [SpellDetail].[SpellId] (FK_SpellDetail_Spell)
+        /// </summary>
+        public virtual SpellDetail SpellDetail { get; set; } // SpellDetail.FK_SpellDetail_Spell
         /// <summary>
         /// Child ArchtypeSpellLists where [ArchtypeSpellList].[ArchtypeId] point to this entity (FK_ArchtypeSpellList_Spell)
         /// </summary>

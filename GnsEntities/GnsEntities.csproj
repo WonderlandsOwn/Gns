@@ -51,6 +51,12 @@
     <Compile Include="Archtype.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArchtypeBonu.cs">
+      <DependentUpon>GnsDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArchtypeBonuConfiguration.cs">
+      <DependentUpon>GnsDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="ArchtypeConfiguration.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
@@ -70,18 +76,6 @@
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
     <Compile Include="CharacterConfiguration.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CharacterDetail.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CharacterDetailConfiguration.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CharacterInventory.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CharacterInventoryConfiguration.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
     <Compile Include="CharacterStatu.cs">
@@ -110,20 +104,20 @@
     <Compile Include="PlayerConfiguration.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="PlayerDetail.cs">
+    <Compile Include="PlayerDeck.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="PlayerDetailConfiguration.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PlayerInventory.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PlayerInventoryConfiguration.cs">
+    <Compile Include="PlayerDeckConfiguration.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs">
+      <DependentUpon>GnsDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RaceBonu.cs">
+      <DependentUpon>GnsDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RaceBonuConfiguration.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
     <Compile Include="RaceConfiguration.cs">
@@ -135,16 +129,16 @@
     <Compile Include="RaceDetailConfiguration.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Resource.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResourceConfiguration.cs">
-      <DependentUpon>GnsDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Spell.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
     <Compile Include="SpellConfiguration.cs">
+      <DependentUpon>GnsDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpellDetail.cs">
+      <DependentUpon>GnsDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpellDetailConfiguration.cs">
       <DependentUpon>GnsDb.tt</DependentUpon>
     </Compile>
   </ItemGroup>

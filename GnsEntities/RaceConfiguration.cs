@@ -29,14 +29,8 @@ namespace GnsEntities
             ToTable("Race", schema);
             HasKey(x => x.RaceId);
 
-            Property(x => x.RaceId).HasColumnName(@"RaceId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.RaceName).HasColumnName(@"RaceName").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            HasMany(t => t.Resources).WithMany(t => t.Races).Map(m =>
-            {
-                m.ToTable("RaceResourceList", "dbo");
-                m.MapLeftKey("RaceId");
-                m.MapRightKey("ResourceId");
-            });
+            Property(x => x.RaceId).HasColumnName(@"RaceId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.RaceName).HasColumnName(@"RaceName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
             HasMany(t => t.Spells).WithMany(t => t.Races).Map(m =>
             {
                 m.ToTable("RaceSpellList", "dbo");

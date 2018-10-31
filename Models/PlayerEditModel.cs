@@ -12,6 +12,6 @@ namespace Models
         public string PlayerName { get; set; }
         public string ActiveCharacterName { get; set; }
         public int? ActiveCharacterId { get; set; }
-        public List<BasicListModel>AvailableCharacters { get; set; }
+        public List<IdAndName>AvailableCharacters { get; set; }
     }
 }

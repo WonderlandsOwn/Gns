@@ -21,21 +21,25 @@ namespace GnsEntities
     {
         public int PlayerId { get; set; } // PlayerId (Primary key)
         public string PlayerName { get; set; } // PlayerName (length: 50)
+        public int? PlayerActiveCharacterId { get; set; } // PlayerActiveCharacterID
 
         // Reverse navigation
 
         /// <summary>
-        /// Parent (One-to-One) Player pointed by [PlayerDetail].[PlayerId] (FK_PlayerDetail_Player)
+        /// Parent (One-to-One) Player pointed by [PlayerDeck].[PlayerId] (FK_PlayerDeck_Player)
         /// </summary>
-        public virtual PlayerDetail PlayerDetail { get; set; } // PlayerDetail.FK_PlayerDetail_Player
+        public virtual PlayerDeck PlayerDeck { get; set; } // PlayerDeck.FK_PlayerDeck_Player
         /// <summary>
-        /// Parent (One-to-One) Player pointed by [PlayerInventory].[PlayerId] (FK_PlayerInventory_Player)
+        /// Child Characters where [Character].[CharacterPlayerId] point to this entity (FK_Character_Player)
         /// </summary>
-        public virtual PlayerInventory PlayerInventory { get; set; } // PlayerInventory.FK_PlayerInventory_Player
+        public virtual System.Collections.Generic.ICollection<Character> Characters { get; set; } // Character.FK_Character_Player
+
+        // Foreign keys
+
         /// <summary>
-        /// Child Characters (Many-to-Many) mapped by table [PlayerCharacterList]
+        /// Parent Character pointed by [Player].([PlayerActiveCharacterId]) (FK_Player_Character)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Character> Characters { get; set; } // Many to many mapping
+        public virtual Character Character { get; set; } // FK_Player_Character
 
         public Player()
         {

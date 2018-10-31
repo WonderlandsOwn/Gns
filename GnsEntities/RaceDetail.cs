@@ -20,6 +20,7 @@ namespace GnsEntities
     public class RaceDetail
     {
         public int RaceId { get; set; } // RaceId (Primary key)
+        public string RaceShortDescription { get; set; } // RaceShortDescription (length: 50)
         public string RaceDescription { get; set; } // RaceDescription (length: 100)
 
         // Foreign keys

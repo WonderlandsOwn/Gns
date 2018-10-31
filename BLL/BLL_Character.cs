@@ -10,16 +10,16 @@ namespace BLL
 {
     public class BLL_Character
     {
-        CharacterRepository characterRepository;
+        DAL_Character characterRepository;
 
         public BLL_Character()
         {
-            characterRepository = new CharacterRepository();
+            characterRepository = new DAL_Character();
         }
 
         public List<CharacterIndexRowModel> GetCharacterIndex(int playerId)
         {
-            return new PlayerRepository().GetPlayerCharacterIndex(playerId);
+            return new DAL_Player().GetPlayerCharacterIndex(playerId);
         }
     }
 }

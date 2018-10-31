@@ -15,18 +15,23 @@
 namespace GnsEntities
 {
 
-    // CharacterDetail
+    // SpellDetail
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.2.0")]
-    public class CharacterDetail
+    public class SpellDetail
     {
-        public int CharacterId { get; set; } // CharacterId (Primary key)
+        public int SpellId { get; set; } // SpellId (Primary key)
+        public string SpellShortDescription { get; set; } // SpellShortDescription (length: 50)
+        public string SpellDescription { get; set; } // SpellDescription (length: 100)
+        public int? SpellDamage { get; set; } // SpellDamage
+        public int? SpellCost { get; set; } // SpellCost
+        public int? SpellCooldown { get; set; } // SpellCooldown
 
         // Foreign keys
 
         /// <summary>
-        /// Parent Character pointed by [CharacterDetail].([CharacterId]) (FK_CharacterDetail_Character)
+        /// Parent Spell pointed by [SpellDetail].([SpellId]) (FK_SpellDetail_Spell)
         /// </summary>
-        public virtual Character Character { get; set; } // FK_CharacterDetail_Character
+        public virtual Spell Spell { get; set; } // FK_SpellDetail_Spell
     }
 
 }

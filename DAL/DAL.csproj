@@ -48,10 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterRepository.cs" />
+    <Compile Include="DAL_Archtype.cs" />
+    <Compile Include="DAL_Character.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="PlayerRepository.cs" />
+    <Compile Include="DAL_Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DAL_Race.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>

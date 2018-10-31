@@ -20,6 +20,7 @@ namespace GnsEntities
     public class Character
     {
         public int CharacterId { get; set; } // CharacterId (Primary key)
+        public int? CharacterPlayerId { get; set; } // CharacterPlayerId
         public string CharacterName { get; set; } // CharacterName (length: 50)
         public int CharacterRaceId { get; set; } // CharacterRaceId
         public int CharacterPrimaryArchtypeId { get; set; } // CharacterPrimaryArchtypeId
@@ -33,25 +34,13 @@ namespace GnsEntities
         // Reverse navigation
 
         /// <summary>
-        /// Parent (One-to-One) Character pointed by [CharacterDetail].[CharacterId] (FK_CharacterDetail_Character)
-        /// </summary>
-        public virtual CharacterDetail CharacterDetail { get; set; } // CharacterDetail.FK_CharacterDetail_Character
-        /// <summary>
-        /// Parent (One-to-One) Character pointed by [CharacterInventory].[CharacterId] (FK_CharacterInventory_Character)
-        /// </summary>
-        public virtual CharacterInventory CharacterInventory { get; set; } // CharacterInventory.FK_CharacterInventory_Character
-        /// <summary>
         /// Parent (One-to-One) Character pointed by [CharacterStatus].[CharacterId] (FK_CharacterStatus_Character)
         /// </summary>
         public virtual CharacterStatu CharacterStatu { get; set; } // CharacterStatus.FK_CharacterStatus_Character
         /// <summary>
-        /// Child Players (Many-to-Many) mapped by table [PlayerCharacterList]
+        /// Child Players where [Player].[PlayerActiveCharacterID] point to this entity (FK_Player_Character)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Player> Players { get; set; } // Many to many mapping
-        /// <summary>
-        /// Child PlayerDetails where [PlayerDetail].[ActiveCharacterId] point to this entity (FK_PlayerDetail_Character)
-        /// </summary>
-        public virtual System.Collections.Generic.ICollection<PlayerDetail> PlayerDetails { get; set; } // PlayerDetail.FK_PlayerDetail_Character
+        public virtual System.Collections.Generic.ICollection<Player> Players { get; set; } // Player.FK_Player_Character
 
         // Foreign keys
 
@@ -66,13 +55,17 @@ namespace GnsEntities
         public virtual Archtype CharacterSecondaryArchtype { get; set; } // FK_Character_Secondary_Archtype
 
         /// <summary>
+        /// Parent Player pointed by [Character].([CharacterPlayerId]) (FK_Character_Player)
+        /// </summary>
+        public virtual Player Player { get; set; } // FK_Character_Player
+
+        /// <summary>
         /// Parent Race pointed by [Character].([CharacterRaceId]) (FK_Character_Race)
         /// </summary>
         public virtual Race Race { get; set; } // FK_Character_Race
 
         public Character()
         {
-            PlayerDetails = new System.Collections.Generic.List<PlayerDetail>();
             Players = new System.Collections.Generic.List<Player>();
         }
     }

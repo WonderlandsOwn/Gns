@@ -25,6 +25,14 @@ namespace GnsEntities
         // Reverse navigation
 
         /// <summary>
+        /// Parent (One-to-One) Archtype pointed by [ArchtypeBonus].[ArchtypeId] (FK_ArchtypeBonus_Archtype)
+        /// </summary>
+        public virtual ArchtypeBonu ArchtypeBonu { get; set; } // ArchtypeBonus.FK_ArchtypeBonus_Archtype
+        /// <summary>
+        /// Parent (One-to-One) Archtype pointed by [ArchtypeDetail].[ArchtypeId] (FK_ArchtypeDetail_ArchType)
+        /// </summary>
+        public virtual ArchtypeDetail ArchtypeDetail { get; set; } // ArchtypeDetail.FK_ArchtypeDetail_ArchType
+        /// <summary>
         /// Child ArchtypeSpellLists where [ArchtypeSpellList].[ArchtypeId] point to this entity (FK_ArchtypeSpellList_Archtype)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<ArchtypeSpellList> ArchtypeSpellLists { get; set; } // ArchtypeSpellList.FK_ArchtypeSpellList_Archtype
@@ -36,13 +44,6 @@ namespace GnsEntities
         /// Child Characters where [Character].[CharacterSecondaryArchtypeId] point to this entity (FK_Character_Secondary_Archtype)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Character> Characters_CharacterSecondaryArchtypeId { get; set; } // Character.FK_Character_Secondary_Archtype
-
-        // Foreign keys
-
-        /// <summary>
-        /// Parent ArchtypeDetail pointed by [Archtype].([ArchtypeId]) (FK_Archtype_ArchtypeDetail)
-        /// </summary>
-        public virtual ArchtypeDetail ArchtypeDetail { get; set; } // FK_Archtype_ArchtypeDetail
 
         public Archtype()
         {

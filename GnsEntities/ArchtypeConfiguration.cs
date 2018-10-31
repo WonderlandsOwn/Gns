@@ -29,11 +29,8 @@ namespace GnsEntities
             ToTable("Archtype", schema);
             HasKey(x => x.ArchtypeId);
 
-            Property(x => x.ArchtypeId).HasColumnName(@"ArchtypeId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.ArchtypeName).HasColumnName(@"ArchtypeName").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-
-            // Foreign keys
-            HasRequired(a => a.ArchtypeDetail).WithOptional(b => b.Archtype).WillCascadeOnDelete(false); // FK_Archtype_ArchtypeDetail
+            Property(x => x.ArchtypeId).HasColumnName(@"ArchtypeId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.ArchtypeName).HasColumnName(@"ArchtypeName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
         }
     }
 

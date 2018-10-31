@@ -26,12 +26,14 @@ namespace MVC.Controllers
         {
             CharacterCreateModel createModel = new CharacterCreateModel();
             createModel.PlayerId = id;
+            createModel.AvailableRaces = new BLL_Race().GetBasicList();
+            createModel.AvailableArchtypes = new BLL_Archtype().GetBasicList();
             return View(createModel);
         }
 
         // POST: Character/Create
         [HttpPost]
-        public ActionResult Create(CharacterCreateModel collection)
+        public ActionResult Create(CharacterCreateModel  createModel)
         {
             try
             {
@@ -58,28 +60,6 @@ namespace MVC.Controllers
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Character/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Character/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }

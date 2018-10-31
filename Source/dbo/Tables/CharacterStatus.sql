@@ -1,12 +1,22 @@
 ﻿CREATE TABLE [dbo].[CharacterStatus] (
-    [CharacterId]                  INT NOT NULL,
-    [CharacterPrimaryResourceId]   INT NULL,
-    [CharacterSecondaryResourceId] INT NULL,
+    [CharacterId]               INT NOT NULL,
+    [CharacterBaseHealth]       INT NOT NULL,
+    [CharacterCurrentHealth]    INT NOT NULL,
+    [CharacterBaseStamina]      INT NOT NULL,
+    [CharacterCurrentStamina]   INT NOT NULL,
+    [CharacterBaseStrength]     INT NOT NULL,
+    [CharacterBaseAgility]      INT NOT NULL,
+    [CharacterBaseIntellect]    INT NOT NULL,
+    [CharacterBaseFortitude]    INT NOT NULL,
+    [CharacterBaseEndurance]    INT NOT NULL,
+    [CharacterBaseConstitution] INT NOT NULL,
     CONSTRAINT [PK_CharacterStatus] PRIMARY KEY CLUSTERED ([CharacterId] ASC),
-    CONSTRAINT [FK_CharacterStatus_Character] FOREIGN KEY ([CharacterId]) REFERENCES [dbo].[Character] ([CharacterId]),
-    CONSTRAINT [FK_CharacterStatus_Primary_Resource] FOREIGN KEY ([CharacterPrimaryResourceId]) REFERENCES [dbo].[Resource] ([ResourceId]),
-    CONSTRAINT [FK_CharacterStatus_Secondary_Resource] FOREIGN KEY ([CharacterSecondaryResourceId]) REFERENCES [dbo].[Resource] ([ResourceId])
+	CONSTRAINT [FK_CharacterStatus_Character] FOREIGN KEY ([CharacterId]) REFERENCES [dbo].[Character] ([CharacterId])
 );
+
+
+
+
 
 
 

@@ -15,26 +15,24 @@
 namespace GnsEntities
 {
 
-    // PlayerDetail
+    // PlayerDeck
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.2.0")]
-    public class PlayerDetailConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PlayerDetail>
+    public class PlayerDeckConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PlayerDeck>
     {
-        public PlayerDetailConfiguration()
+        public PlayerDeckConfiguration()
             : this("dbo")
         {
         }
 
-        public PlayerDetailConfiguration(string schema)
+        public PlayerDeckConfiguration(string schema)
         {
-            ToTable("PlayerDetail", schema);
+            ToTable("PlayerDeck", schema);
             HasKey(x => x.PlayerId);
 
             Property(x => x.PlayerId).HasColumnName(@"PlayerId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.ActiveCharacterId).HasColumnName(@"ActiveCharacterId").HasColumnType("int").IsOptional();
 
             // Foreign keys
-            HasOptional(a => a.Character).WithMany(b => b.PlayerDetails).HasForeignKey(c => c.ActiveCharacterId).WillCascadeOnDelete(false); // FK_PlayerDetail_Character
-            HasRequired(a => a.Player).WithOptional(b => b.PlayerDetail).WillCascadeOnDelete(false); // FK_PlayerDetail_Player
+            HasRequired(a => a.Player).WithOptional(b => b.PlayerDeck).WillCascadeOnDelete(false); // FK_PlayerDeck_Player
         }
     }
 

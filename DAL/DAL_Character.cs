@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
 
-namespace Models
+namespace DAL
 {
-    public class BasicListModel
+    public class DAL_Character : Repository<GnsEntities.Character>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        
+
     }
 }

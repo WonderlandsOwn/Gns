@@ -1,8 +1,12 @@
 ﻿CREATE TABLE [dbo].[Race] (
-    [RaceId]   INT          NOT NULL,
-    [RaceName] VARCHAR (50) NULL,
-    PRIMARY KEY CLUSTERED ([RaceId] ASC)
+    [RaceId]   INT          IDENTITY (1, 1) NOT NULL,
+    [RaceName] VARCHAR (50) NOT NULL,
+    CONSTRAINT [PK__Race] PRIMARY KEY CLUSTERED ([RaceId] ASC)
 );
+
+
+
+
 
 
 

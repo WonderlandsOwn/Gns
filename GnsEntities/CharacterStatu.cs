@@ -20,8 +20,16 @@ namespace GnsEntities
     public class CharacterStatu
     {
         public int CharacterId { get; set; } // CharacterId (Primary key)
-        public int? CharacterPrimaryResourceId { get; set; } // CharacterPrimaryResourceId
-        public int? CharacterSecondaryResourceId { get; set; } // CharacterSecondaryResourceId
+        public int CharacterBaseHealth { get; set; } // CharacterBaseHealth
+        public int CharacterCurrentHealth { get; set; } // CharacterCurrentHealth
+        public int CharacterBaseStamina { get; set; } // CharacterBaseStamina
+        public int CharacterCurrentStamina { get; set; } // CharacterCurrentStamina
+        public int CharacterBaseStrength { get; set; } // CharacterBaseStrength
+        public int CharacterBaseAgility { get; set; } // CharacterBaseAgility
+        public int CharacterBaseIntellect { get; set; } // CharacterBaseIntellect
+        public int CharacterBaseFortitude { get; set; } // CharacterBaseFortitude
+        public int CharacterBaseEndurance { get; set; } // CharacterBaseEndurance
+        public int CharacterBaseConstitution { get; set; } // CharacterBaseConstitution
 
         // Foreign keys
 
@@ -29,16 +37,6 @@ namespace GnsEntities
         /// Parent Character pointed by [CharacterStatus].([CharacterId]) (FK_CharacterStatus_Character)
         /// </summary>
         public virtual Character Character { get; set; } // FK_CharacterStatus_Character
-
-        /// <summary>
-        /// Parent Resource pointed by [CharacterStatus].([CharacterPrimaryResourceId]) (FK_CharacterStatus_Primary_Resource)
-        /// </summary>
-        public virtual Resource CharacterPrimaryResource { get; set; } // FK_CharacterStatus_Primary_Resource
-
-        /// <summary>
-        /// Parent Resource pointed by [CharacterStatus].([CharacterSecondaryResourceId]) (FK_CharacterStatus_Secondary_Resource)
-        /// </summary>
-        public virtual Resource CharacterSecondaryResource { get; set; } // FK_CharacterStatus_Secondary_Resource
     }
 
 }

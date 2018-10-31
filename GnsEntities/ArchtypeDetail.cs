@@ -20,14 +20,15 @@ namespace GnsEntities
     public class ArchtypeDetail
     {
         public int ArchtypeId { get; set; } // ArchtypeId (Primary key)
+        public string ArchtypeShortDescription { get; set; } // ArchtypeShortDescription (length: 50)
         public string ArchtypeDescription { get; set; } // ArchtypeDescription (length: 100)
 
-        // Reverse navigation
+        // Foreign keys
 
         /// <summary>
-        /// Parent (One-to-One) ArchtypeDetail pointed by [Archtype].[ArchtypeId] (FK_Archtype_ArchtypeDetail)
+        /// Parent Archtype pointed by [ArchtypeDetail].([ArchtypeId]) (FK_ArchtypeDetail_ArchType)
         /// </summary>
-        public virtual Archtype Archtype { get; set; } // Archtype.FK_Archtype_ArchtypeDetail
+        public virtual Archtype Archtype { get; set; } // FK_ArchtypeDetail_ArchType
     }
 
 }

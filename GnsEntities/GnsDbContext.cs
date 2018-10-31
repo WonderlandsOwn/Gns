@@ -20,19 +20,18 @@ namespace GnsEntities
     public class GnsDbContext : System.Data.Entity.DbContext, IGnsDbContext
     {
         public System.Data.Entity.DbSet<Archtype> Archtypes { get; set; } // Archtype
+        public System.Data.Entity.DbSet<ArchtypeBonu> ArchtypeBonus { get; set; } // ArchtypeBonus
         public System.Data.Entity.DbSet<ArchtypeDetail> ArchtypeDetails { get; set; } // ArchtypeDetail
         public System.Data.Entity.DbSet<ArchtypeSpellList> ArchtypeSpellLists { get; set; } // ArchtypeSpellList
         public System.Data.Entity.DbSet<Character> Characters { get; set; } // Character
-        public System.Data.Entity.DbSet<CharacterDetail> CharacterDetails { get; set; } // CharacterDetail
-        public System.Data.Entity.DbSet<CharacterInventory> CharacterInventories { get; set; } // CharacterInventory
         public System.Data.Entity.DbSet<CharacterStatu> CharacterStatus { get; set; } // CharacterStatus
         public System.Data.Entity.DbSet<Player> Players { get; set; } // Player
-        public System.Data.Entity.DbSet<PlayerDetail> PlayerDetails { get; set; } // PlayerDetail
-        public System.Data.Entity.DbSet<PlayerInventory> PlayerInventories { get; set; } // PlayerInventory
+        public System.Data.Entity.DbSet<PlayerDeck> PlayerDecks { get; set; } // PlayerDeck
         public System.Data.Entity.DbSet<Race> Races { get; set; } // Race
+        public System.Data.Entity.DbSet<RaceBonu> RaceBonus { get; set; } // RaceBonus
         public System.Data.Entity.DbSet<RaceDetail> RaceDetails { get; set; } // RaceDetail
-        public System.Data.Entity.DbSet<Resource> Resources { get; set; } // Resource
         public System.Data.Entity.DbSet<Spell> Spells { get; set; } // Spell
+        public System.Data.Entity.DbSet<SpellDetail> SpellDetails { get; set; } // SpellDetail
 
         static GnsDbContext()
         {
@@ -83,37 +82,35 @@ namespace GnsEntities
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configurations.Add(new ArchtypeConfiguration());
+            modelBuilder.Configurations.Add(new ArchtypeBonuConfiguration());
             modelBuilder.Configurations.Add(new ArchtypeDetailConfiguration());
             modelBuilder.Configurations.Add(new ArchtypeSpellListConfiguration());
             modelBuilder.Configurations.Add(new CharacterConfiguration());
-            modelBuilder.Configurations.Add(new CharacterDetailConfiguration());
-            modelBuilder.Configurations.Add(new CharacterInventoryConfiguration());
             modelBuilder.Configurations.Add(new CharacterStatuConfiguration());
             modelBuilder.Configurations.Add(new PlayerConfiguration());
-            modelBuilder.Configurations.Add(new PlayerDetailConfiguration());
-            modelBuilder.Configurations.Add(new PlayerInventoryConfiguration());
+            modelBuilder.Configurations.Add(new PlayerDeckConfiguration());
             modelBuilder.Configurations.Add(new RaceConfiguration());
+            modelBuilder.Configurations.Add(new RaceBonuConfiguration());
             modelBuilder.Configurations.Add(new RaceDetailConfiguration());
-            modelBuilder.Configurations.Add(new ResourceConfiguration());
             modelBuilder.Configurations.Add(new SpellConfiguration());
+            modelBuilder.Configurations.Add(new SpellDetailConfiguration());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
             modelBuilder.Configurations.Add(new ArchtypeConfiguration(schema));
+            modelBuilder.Configurations.Add(new ArchtypeBonuConfiguration(schema));
             modelBuilder.Configurations.Add(new ArchtypeDetailConfiguration(schema));
             modelBuilder.Configurations.Add(new ArchtypeSpellListConfiguration(schema));
             modelBuilder.Configurations.Add(new CharacterConfiguration(schema));
-            modelBuilder.Configurations.Add(new CharacterDetailConfiguration(schema));
-            modelBuilder.Configurations.Add(new CharacterInventoryConfiguration(schema));
             modelBuilder.Configurations.Add(new CharacterStatuConfiguration(schema));
             modelBuilder.Configurations.Add(new PlayerConfiguration(schema));
-            modelBuilder.Configurations.Add(new PlayerDetailConfiguration(schema));
-            modelBuilder.Configurations.Add(new PlayerInventoryConfiguration(schema));
+            modelBuilder.Configurations.Add(new PlayerDeckConfiguration(schema));
             modelBuilder.Configurations.Add(new RaceConfiguration(schema));
+            modelBuilder.Configurations.Add(new RaceBonuConfiguration(schema));
             modelBuilder.Configurations.Add(new RaceDetailConfiguration(schema));
-            modelBuilder.Configurations.Add(new ResourceConfiguration(schema));
             modelBuilder.Configurations.Add(new SpellConfiguration(schema));
+            modelBuilder.Configurations.Add(new SpellDetailConfiguration(schema));
             return modelBuilder;
         }
     }

@@ -15,18 +15,18 @@
 namespace GnsEntities
 {
 
-    // CharacterInventory
+    // PlayerDeck
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.37.2.0")]
-    public class CharacterInventory
+    public class PlayerDeck
     {
-        public int CharacterId { get; set; } // CharacterId (Primary key)
+        public int PlayerId { get; set; } // PlayerId (Primary key)
 
         // Foreign keys
 
         /// <summary>
-        /// Parent Character pointed by [CharacterInventory].([CharacterId]) (FK_CharacterInventory_Character)
+        /// Parent Player pointed by [PlayerDeck].([PlayerId]) (FK_PlayerDeck_Player)
         /// </summary>
-        public virtual Character Character { get; set; } // FK_CharacterInventory_Character
+        public virtual Player Player { get; set; } // FK_PlayerDeck_Player
     }
 
 }

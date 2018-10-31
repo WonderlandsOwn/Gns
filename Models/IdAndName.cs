@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models;
 
-namespace DAL
+namespace Models
 {
-    public class CharacterRepository : Repository<GnsEntities.Character>
+    public class IdAndName
     {
-        
-
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

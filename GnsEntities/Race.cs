@@ -25,6 +25,10 @@ namespace GnsEntities
         // Reverse navigation
 
         /// <summary>
+        /// Parent (One-to-One) Race pointed by [RaceBonus].[RaceId] (FK_RaceBonus_Race)
+        /// </summary>
+        public virtual RaceBonu RaceBonu { get; set; } // RaceBonus.FK_RaceBonus_Race
+        /// <summary>
         /// Parent (One-to-One) Race pointed by [RaceDetail].[RaceId] (FK_RaceDetail_Race)
         /// </summary>
         public virtual RaceDetail RaceDetail { get; set; } // RaceDetail.FK_RaceDetail_Race
@@ -33,10 +37,6 @@ namespace GnsEntities
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Character> Characters { get; set; } // Character.FK_Character_Race
         /// <summary>
-        /// Child Resources (Many-to-Many) mapped by table [RaceResourceList]
-        /// </summary>
-        public virtual System.Collections.Generic.ICollection<Resource> Resources { get; set; } // Many to many mapping
-        /// <summary>
         /// Child Spells (Many-to-Many) mapped by table [RaceSpellList]
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Spell> Spells { get; set; } // Many to many mapping
@@ -44,7 +44,6 @@ namespace GnsEntities
         public Race()
         {
             Characters = new System.Collections.Generic.List<Character>();
-            Resources = new System.Collections.Generic.List<Resource>();
             Spells = new System.Collections.Generic.List<Spell>();
         }
     }

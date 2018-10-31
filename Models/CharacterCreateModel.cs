@@ -11,9 +11,9 @@ namespace Models
         public int PlayerId { get; set; }
         public string CharacterName { get; set; }
         public int CharacterRaceId { get; set; }
-        public List<BasicListModel> AvailableRaces { get; set; }
+        public List<IdAndName> AvailableRaces { get; set; }
         public int CharacterPrimaryArchtypeId { get; set; }
         public int? CharacterSecondaryArchtypeId { get; set; }
-        public List<BasicListModel> AvailableArchtypes { get; set; }
+        public List<IdAndName> AvailableArchtypes { get; set; }
     }
 }

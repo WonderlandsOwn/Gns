@@ -30,12 +30,18 @@ namespace GnsEntities
             HasKey(x => x.CharacterId);
 
             Property(x => x.CharacterId).HasColumnName(@"CharacterId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.CharacterPrimaryResourceId).HasColumnName(@"CharacterPrimaryResourceId").HasColumnType("int").IsOptional();
-            Property(x => x.CharacterSecondaryResourceId).HasColumnName(@"CharacterSecondaryResourceId").HasColumnType("int").IsOptional();
+            Property(x => x.CharacterBaseHealth).HasColumnName(@"CharacterBaseHealth").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterCurrentHealth).HasColumnName(@"CharacterCurrentHealth").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterBaseStamina).HasColumnName(@"CharacterBaseStamina").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterCurrentStamina).HasColumnName(@"CharacterCurrentStamina").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterBaseStrength).HasColumnName(@"CharacterBaseStrength").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterBaseAgility).HasColumnName(@"CharacterBaseAgility").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterBaseIntellect).HasColumnName(@"CharacterBaseIntellect").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterBaseFortitude).HasColumnName(@"CharacterBaseFortitude").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterBaseEndurance).HasColumnName(@"CharacterBaseEndurance").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterBaseConstitution).HasColumnName(@"CharacterBaseConstitution").HasColumnType("int").IsRequired();
 
             // Foreign keys
-            HasOptional(a => a.CharacterPrimaryResource).WithMany(b => b.CharacterStatus_CharacterPrimaryResourceId).HasForeignKey(c => c.CharacterPrimaryResourceId).WillCascadeOnDelete(false); // FK_CharacterStatus_Primary_Resource
-            HasOptional(a => a.CharacterSecondaryResource).WithMany(b => b.CharacterStatus_CharacterSecondaryResourceId).HasForeignKey(c => c.CharacterSecondaryResourceId).WillCascadeOnDelete(false); // FK_CharacterStatus_Secondary_Resource
             HasRequired(a => a.Character).WithOptional(b => b.CharacterStatu).WillCascadeOnDelete(false); // FK_CharacterStatus_Character
         }
     }

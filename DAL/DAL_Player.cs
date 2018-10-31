@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class PlayerRepository : Repository<GnsEntities.Player>
+    public class DAL_Player : Repository<GnsEntities.Player>
     {
 
         public List<PlayerIndexModel> GetAllPlayersAsIndexModel()
@@ -19,28 +19,26 @@ namespace DAL
             {
                 PlayerId = p.PlayerId,
                 PlayerName = p.PlayerName,
-                ActiveCharacterId = p.PlayerDetail.ActiveCharacterId,
-                ActiveCharatcerName = p.PlayerDetail.Character.CharacterName
+                ActiveCharacterId = p.PlayerActiveCharacterId,
+                ActiveCharatcerName = p.Character.CharacterName
             }).ToList();
         }
 
         public PlayerEditModel GetPlayerEditModel(int id)
         {
             GnsEntities.Player player = GetByID(id);
-            PlayerEditModel model = new PlayerEditModel()
+            return new PlayerEditModel()
             {
                 PlayerId = player.PlayerId,
                 PlayerName = player.PlayerName,
-                ActiveCharacterId = player.PlayerDetail.ActiveCharacterId,
-                ActiveCharacterName = player.PlayerDetail.ActiveCharacterId.Equals(null) ? null : player.PlayerDetail.Character.CharacterName,
-                AvailableCharacters = player.PlayerDetail.Player.Characters.Count.Equals(0) ? null : player.Characters.Select(c => new BasicListModel()
+                ActiveCharacterId = player.PlayerActiveCharacterId,
+                ActiveCharacterName = player.Character == null ? null : player.Character.CharacterName,
+                AvailableCharacters = player.Characters.Count == 0 ? null : player.Characters.Select(c => new IdAndName()
                 {
                     Id = c.CharacterId,
                     Name = c.CharacterName
                 }).ToList()
             };
-
-            return model;
         }
 
         public bool UpdatePlayerDetail(PlayerEditModel editModel)
@@ -48,14 +46,16 @@ namespace DAL
             GnsEntities.Player player = GetByID(editModel.PlayerId);
 
             player.PlayerName = editModel.PlayerName;
-            player.PlayerDetail.ActiveCharacterId = editModel.ActiveCharacterId;
+            player.PlayerActiveCharacterId = editModel.ActiveCharacterId;
             return Update(player);
         }
 
         public bool CreateNewPlayer(PlayerCreateModel createModel)
         {
-            GnsEntities.Player player = new GnsEntities.Player();
-            player.PlayerName = createModel.PlayerName;
+            GnsEntities.Player player = new GnsEntities.Player()
+            {
+                PlayerName = createModel.PlayerName
+            };
             return Insert(player);
         }
 

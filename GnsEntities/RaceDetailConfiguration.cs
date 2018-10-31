@@ -30,7 +30,8 @@ namespace GnsEntities
             HasKey(x => x.RaceId);
 
             Property(x => x.RaceId).HasColumnName(@"RaceId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.RaceDescription).HasColumnName(@"RaceDescription").HasColumnType("nchar").IsOptional().IsFixedLength().HasMaxLength(100);
+            Property(x => x.RaceShortDescription).HasColumnName(@"RaceShortDescription").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.RaceDescription).HasColumnName(@"RaceDescription").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(100);
 
             // Foreign keys
             HasRequired(a => a.Race).WithOptional(b => b.RaceDetail).WillCascadeOnDelete(false); // FK_RaceDetail_Race
