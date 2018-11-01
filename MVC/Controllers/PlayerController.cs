@@ -12,7 +12,7 @@ namespace MVC.Controllers
         // GET: Player
         public ActionResult Index()
         {
-            List<PlayerIndexModel> indexModel = new List<PlayerIndexModel>();
+            List<PlayerIndexRowModel> indexModel = new List<PlayerIndexRowModel>();
             indexModel.AddRange(new BLL_Player().GetCompletePlayerIndex());
             return View(indexModel);
         }
@@ -25,7 +25,7 @@ namespace MVC.Controllers
 
         // POST: Player/Create
         [HttpPost]
-        public ActionResult Create(PlayerCreateModel createModel)
+        public ActionResult Create(PlayerModel createModel)
         {
             try
             {
@@ -41,14 +41,14 @@ namespace MVC.Controllers
         // GET: Player/Edit/5
         public ActionResult Edit(int id)
         {
-            PlayerEditModel editModel = new BLL_Player().GetPlayerForEdit(id);
+            PlayerModel editModel = new BLL_Player().GetPlayerForEdit(id);
 
             return View(editModel);
         }
 
         // POST: Player/Edit/5
         [HttpPost]
-        public ActionResult Edit(PlayerEditModel editModel)
+        public ActionResult Edit(PlayerModel editModel)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace MVC.Controllers
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 

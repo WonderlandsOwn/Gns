@@ -32,15 +32,16 @@ namespace GnsEntities
             Property(x => x.ArchtypeId).HasColumnName(@"ArchtypeId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
             Property(x => x.BonusHealth).HasColumnName(@"BonusHealth").HasColumnType("int").IsRequired();
             Property(x => x.BonusStamina).HasColumnName(@"BonusStamina").HasColumnType("int").IsRequired();
+            Property(x => x.BonusConcentration).HasColumnName(@"BonusConcentration").HasColumnType("int").IsRequired();
             Property(x => x.BonusStrength).HasColumnName(@"BonusStrength").HasColumnType("int").IsRequired();
             Property(x => x.BonusAgility).HasColumnName(@"BonusAgility").HasColumnType("int").IsRequired();
             Property(x => x.BonusIntellect).HasColumnName(@"BonusIntellect").HasColumnType("int").IsRequired();
-            Property(x => x.BonusFortitude).HasColumnName(@"BonusFortitude").HasColumnType("int").IsRequired();
-            Property(x => x.BonusEndurance).HasColumnName(@"BonusEndurance").HasColumnType("int").IsRequired();
-            Property(x => x.BonusConstitution).HasColumnName(@"BonusConstitution").HasColumnType("int").IsRequired();
+            Property(x => x.BonusBlock).HasColumnName(@"BonusBlock").HasColumnType("int").IsRequired();
+            Property(x => x.BonusDodge).HasColumnName(@"BonusDodge").HasColumnType("int").IsRequired();
+            Property(x => x.BonusResist).HasColumnName(@"BonusResist").HasColumnType("int").IsRequired();
 
             // Foreign keys
-            HasRequired(a => a.Archtype).WithOptional(b => b.ArchtypeBonu).WillCascadeOnDelete(false); // FK_ArchtypeBonus_Archtype
+            HasRequired(a => a.Archtype).WithOptional(b => b.ArchtypeBonu).WillCascadeOnDelete(false); // FK_RaceBonus_Race
         }
     }
 

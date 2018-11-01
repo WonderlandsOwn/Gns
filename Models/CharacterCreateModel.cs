@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    //TODO:Add DataAnnotations
     public class CharacterCreateModel
     {
         public int PlayerId { get; set; }
-        public string CharacterName { get; set; }
-        public int CharacterRaceId { get; set; }
-        public List<IdAndName> AvailableRaces { get; set; }
+        public string CharacterName { get; set; }       
         public int CharacterPrimaryArchtypeId { get; set; }
-        public int? CharacterSecondaryArchtypeId { get; set; }
-        public List<IdAndName> AvailableArchtypes { get; set; }
+        public List<ListPair> AvailablePrimaryArchtypes { get; set; }
+        public int CharacterSecondaryArchtypeId { get; set; }
+        public List<ListPair> AvailableSecondaryArchtypes { get; set; }
+        public int? CharacterTertiaryArchtypeId { get; set; }
+        public List<ListPair> AvailableTertiaryArchtypes { get; set; }
     }
 }

@@ -10,11 +10,11 @@ namespace Models
     {
         public int CharacterId { get; set; }
         public string CharacterName { get; set; }
-        public int CharacterActiveRaceId { get; set; }
-        public string CharacterActiveRaceName { get; set; }
         public int CharacterActivePrimaryArchtypeId { get; set; }
         public string CharacterActivePrimaryArchtypeName { get; set; }
-        public int? CharacterActiveSecondaryArchtypeId { get; set; }
+        public int CharacterActiveSecondaryArchtypeId { get; set; }
         public string CharacterActiveSecondaryArchtypeName { get; set; }
+        public int? CharacterActiveTertiaryArchtypeId { get; set; }
+        public string CharacterActiveTertiaryArchtypeName { get; set; }
     }
 }

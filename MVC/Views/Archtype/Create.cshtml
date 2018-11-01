@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>ArchtypeCreateModel</h4>
     <hr />
@@ -26,83 +26,98 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ArchtypeShortDescription, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.ArchtypeShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.ArchtypeShortDescription, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ArchtypeShortDescription, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ArchtypeDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeLongDescription, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.ArchtypeDescription, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ArchtypeDescription, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeLongDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeLongDescription, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusHealth, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeRankId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusHealth, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusHealth, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.ArchtypeRankId, new SelectList(Model.AvailableRanks, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeRankId, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusStamina, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusHealth, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusStamina, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusStamina, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusHealth, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusHealth, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusStrength, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusStamina, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusStrength, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusStrength, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusStamina, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusStamina, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusAgility, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusConcentration, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusAgility, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusAgility, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusConcentration, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusConcentration, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusIntellect, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusStrength, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusIntellect, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusIntellect, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusStrength, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusStrength, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusFortitude, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusAgility, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusFortitude, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusFortitude, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusAgility, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusAgility, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusEndurance, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusIntellect, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusEndurance, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusEndurance, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusIntellect, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusIntellect, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BonusConstitution, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusBlock, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BonusConstitution, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BonusConstitution, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusBlock, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusBlock, "", new { @class = "text-danger" })
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusDodge, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusDodge, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusDodge, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ArchtypeBonus.BonusResist, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ArchtypeBonus.BonusResist, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ArchtypeBonus.BonusResist, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />

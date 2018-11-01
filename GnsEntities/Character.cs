@@ -21,52 +21,61 @@ namespace GnsEntities
     {
         public int CharacterId { get; set; } // CharacterId (Primary key)
         public int? CharacterPlayerId { get; set; } // CharacterPlayerId
-        public string CharacterName { get; set; } // CharacterName (length: 50)
-        public int CharacterRaceId { get; set; } // CharacterRaceId
+        public string CharacterName { get; set; } // CharacterName (length: 24)
         public int CharacterPrimaryArchtypeId { get; set; } // CharacterPrimaryArchtypeId
-        public int? CharacterSecondaryArchtypeId { get; set; } // CharacterSecondaryArchtypeId
-        public int CharacterPrimarySpellId { get; set; } // CharacterPrimarySpellId
-        public int? CharacterSecondarySpellId { get; set; } // CharacterSecondarySpellId
-        public int? CharacterTertiarySpellId { get; set; } // CharacterTertiarySpellId
-        public int? CharacterPassiveSpellId { get; set; } // CharacterPassiveSpellId
-        public int? CharacterStatusId { get; set; } // CharacterStatusId
+        public int CharacterSecondaryArchtypeId { get; set; } // CharacterSecondaryArchtypeId
+        public int? CharacterTertiaryArchtypeId { get; set; } // CharacterTertiaryArchtypeId
 
         // Reverse navigation
 
         /// <summary>
-        /// Parent (One-to-One) Character pointed by [CharacterStatus].[CharacterId] (FK_CharacterStatus_Character)
+        /// Parent (One-to-One) Character pointed by [CharacterBonus].[CharacterId] (FK_CharacterStatus_Character)
         /// </summary>
-        public virtual CharacterStatu CharacterStatu { get; set; } // CharacterStatus.FK_CharacterStatus_Character
+        public virtual CharacterBonu CharacterBonu { get; set; } // CharacterBonus.FK_CharacterStatus_Character
+        /// <summary>
+        /// Parent (One-to-One) Character pointed by [CharacterSpell].[CharacterId] (FK_CharacterSpell_Character)
+        /// </summary>
+        public virtual CharacterSpell CharacterSpell { get; set; } // CharacterSpell.FK_CharacterSpell_Character
         /// <summary>
         /// Child Players where [Player].[PlayerActiveCharacterID] point to this entity (FK_Player_Character)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<Player> Players { get; set; } // Player.FK_Player_Character
+        /// <summary>
+        /// Child Spells (Many-to-Many) mapped by table [CharacterSpellMap]
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Spell> Spells { get; set; } // Many to many mapping
+        /// <summary>
+        /// Child Unlocks (Many-to-Many) mapped by table [CharacterUnlockList]
+        /// </summary>
+        public virtual System.Collections.Generic.ICollection<Unlock> Unlocks { get; set; } // Many to many mapping
 
         // Foreign keys
 
         /// <summary>
-        /// Parent Archtype pointed by [Character].([CharacterPrimaryArchtypeId]) (FK_Character_Primary_Archtype)
+        /// Parent Archtype pointed by [Character].([CharacterPrimaryArchtypeId]) (FK_Character_PrimaryArchtype)
         /// </summary>
-        public virtual Archtype CharacterPrimaryArchtype { get; set; } // FK_Character_Primary_Archtype
+        public virtual Archtype CharacterPrimaryArchtype { get; set; } // FK_Character_PrimaryArchtype
 
         /// <summary>
-        /// Parent Archtype pointed by [Character].([CharacterSecondaryArchtypeId]) (FK_Character_Secondary_Archtype)
+        /// Parent Archtype pointed by [Character].([CharacterSecondaryArchtypeId]) (FK_Character_SecondaryArchtype)
         /// </summary>
-        public virtual Archtype CharacterSecondaryArchtype { get; set; } // FK_Character_Secondary_Archtype
+        public virtual Archtype CharacterSecondaryArchtype { get; set; } // FK_Character_SecondaryArchtype
+
+        /// <summary>
+        /// Parent Archtype pointed by [Character].([CharacterTertiaryArchtypeId]) (FK_Character_TertiaryArchtype)
+        /// </summary>
+        public virtual Archtype CharacterTertiaryArchtype { get; set; } // FK_Character_TertiaryArchtype
 
         /// <summary>
         /// Parent Player pointed by [Character].([CharacterPlayerId]) (FK_Character_Player)
         /// </summary>
         public virtual Player Player { get; set; } // FK_Character_Player
 
-        /// <summary>
-        /// Parent Race pointed by [Character].([CharacterRaceId]) (FK_Character_Race)
-        /// </summary>
-        public virtual Race Race { get; set; } // FK_Character_Race
-
         public Character()
         {
             Players = new System.Collections.Generic.List<Player>();
+            Unlocks = new System.Collections.Generic.List<Unlock>();
+            Spells = new System.Collections.Generic.List<Spell>();
         }
     }
 

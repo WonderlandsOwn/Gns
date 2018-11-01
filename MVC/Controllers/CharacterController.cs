@@ -26,8 +26,9 @@ namespace MVC.Controllers
         {
             CharacterCreateModel createModel = new CharacterCreateModel();
             createModel.PlayerId = id;
-            createModel.AvailableRaces = new BLL_Race().GetBasicList();
-            createModel.AvailableArchtypes = new BLL_Archtype().GetBasicList();
+            createModel.AvailablePrimaryArchtypes = new BLL_Archtype().GetBasicList(1);
+            createModel.AvailableSecondaryArchtypes = new BLL_Archtype().GetBasicList(2);
+            createModel.AvailableTertiaryArchtypes = new BLL_Archtype().GetBasicList(3);
             return View(createModel);
         }
 
@@ -37,9 +38,9 @@ namespace MVC.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                new BLL_Character().CreateCharacter(createModel);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { Id = createModel.PlayerId });
             }
             catch
             {
@@ -47,21 +48,26 @@ namespace MVC.Controllers
             }
         }
 
+        public ActionResult Details(int id)
+        {
+            CharacterDetailModel detailModel = new BLL_Character().GetCharacterDetails(id);
+            return View(detailModel);
+        }
         // GET: Character/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View("Error");
         }
 
         // POST: Character/Edit/5
         [HttpPost]
-        public ActionResult Edit(CharacterEditModel editModel)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Error");
             }
             catch
             {

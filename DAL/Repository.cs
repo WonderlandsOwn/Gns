@@ -36,7 +36,7 @@ namespace DAL
                 DALContext.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -60,7 +60,7 @@ namespace DAL
                 DALContext.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
@@ -80,7 +80,7 @@ namespace DAL
                 DALContext.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

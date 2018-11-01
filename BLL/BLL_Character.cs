@@ -19,7 +19,48 @@ namespace BLL
 
         public List<CharacterIndexRowModel> GetCharacterIndex(int playerId)
         {
-            return new DAL_Player().GetPlayerCharacterIndex(playerId);
+            return characterRepository.GetPlayerCharacterIndex(playerId);
+        }
+
+        public bool CreateCharacter(CharacterCreateModel createModel)
+        {
+            return characterRepository.CreateNewCharacter(createModel);
+        }
+
+        public CharacterDetailModel GetCharacterDetails(int id)
+        {
+            CharacterDetailModel detailModel = characterRepository.GetCharacterDetail(id);
+            detailModel.CharacterTotalBonus = GetCharacterTotalBonus(id);
+            //todo: get spell list
+            return detailModel;
+        }
+
+        public BonusModel GetCharacterTotalBonus(int id)
+        {
+            List<BonusModel> bonusList = characterRepository.GetArchTypeBonuses(id);
+
+            BonusModel bonusModel = new BonusModel();
+
+            foreach (BonusModel bonus in bonusList)
+            {
+                bonusModel.BonusHealth += bonus.BonusHealth;
+                bonusModel.BonusStamina += bonus.BonusStamina;
+                bonusModel.BonusConcentration += bonus.BonusConcentration;
+
+                bonusModel.BonusStrength += bonus.BonusStrength;
+                bonusModel.BonusAgility += bonus.BonusAgility;
+                bonusModel.BonusIntellect += bonus.BonusIntellect;
+
+                bonusModel.BonusBlock += bonus.BonusBlock;
+                bonusModel.BonusDodge += bonus.BonusDodge;
+                bonusModel.BonusResist += bonus.BonusResist;
+            }
+
+            return bonusModel;
+        }
+        public bool EditCharacter(CharacterCreateModel editModel)
+        {
+            return characterRepository.UpdateCharacter(editModel);
         }
     }
 }

@@ -19,17 +19,15 @@ namespace GnsEntities
     {
         System.Data.Entity.DbSet<Archtype> Archtypes { get; set; } // Archtype
         System.Data.Entity.DbSet<ArchtypeBonu> ArchtypeBonus { get; set; } // ArchtypeBonus
-        System.Data.Entity.DbSet<ArchtypeDetail> ArchtypeDetails { get; set; } // ArchtypeDetail
-        System.Data.Entity.DbSet<ArchtypeSpellList> ArchtypeSpellLists { get; set; } // ArchtypeSpellList
         System.Data.Entity.DbSet<Character> Characters { get; set; } // Character
-        System.Data.Entity.DbSet<CharacterStatu> CharacterStatus { get; set; } // CharacterStatus
+        System.Data.Entity.DbSet<CharacterBonu> CharacterBonus { get; set; } // CharacterBonus
+        System.Data.Entity.DbSet<CharacterSpell> CharacterSpells { get; set; } // CharacterSpell
         System.Data.Entity.DbSet<Player> Players { get; set; } // Player
-        System.Data.Entity.DbSet<PlayerDeck> PlayerDecks { get; set; } // PlayerDeck
-        System.Data.Entity.DbSet<Race> Races { get; set; } // Race
-        System.Data.Entity.DbSet<RaceBonu> RaceBonus { get; set; } // RaceBonus
-        System.Data.Entity.DbSet<RaceDetail> RaceDetails { get; set; } // RaceDetail
+        System.Data.Entity.DbSet<Rank> Ranks { get; set; } // Rank
+        System.Data.Entity.DbSet<Rarity> Rarities { get; set; } // Rarity
         System.Data.Entity.DbSet<Spell> Spells { get; set; } // Spell
         System.Data.Entity.DbSet<SpellDetail> SpellDetails { get; set; } // SpellDetail
+        System.Data.Entity.DbSet<Unlock> Unlocks { get; set; } // Unlock
 
         int SaveChanges();
         System.Threading.Tasks.Task<int> SaveChangesAsync();

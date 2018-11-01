@@ -31,21 +31,28 @@ namespace GnsEntities
 
             Property(x => x.CharacterId).HasColumnName(@"CharacterId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.CharacterPlayerId).HasColumnName(@"CharacterPlayerId").HasColumnType("int").IsOptional();
-            Property(x => x.CharacterName).HasColumnName(@"CharacterName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.CharacterRaceId).HasColumnName(@"CharacterRaceId").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterName).HasColumnName(@"CharacterName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(24);
             Property(x => x.CharacterPrimaryArchtypeId).HasColumnName(@"CharacterPrimaryArchtypeId").HasColumnType("int").IsRequired();
-            Property(x => x.CharacterSecondaryArchtypeId).HasColumnName(@"CharacterSecondaryArchtypeId").HasColumnType("int").IsOptional();
-            Property(x => x.CharacterPrimarySpellId).HasColumnName(@"CharacterPrimarySpellId").HasColumnType("int").IsRequired();
-            Property(x => x.CharacterSecondarySpellId).HasColumnName(@"CharacterSecondarySpellId").HasColumnType("int").IsOptional();
-            Property(x => x.CharacterTertiarySpellId).HasColumnName(@"CharacterTertiarySpellId").HasColumnType("int").IsOptional();
-            Property(x => x.CharacterPassiveSpellId).HasColumnName(@"CharacterPassiveSpellId").HasColumnType("int").IsOptional();
-            Property(x => x.CharacterStatusId).HasColumnName(@"CharacterStatusId").HasColumnType("int").IsOptional();
+            Property(x => x.CharacterSecondaryArchtypeId).HasColumnName(@"CharacterSecondaryArchtypeId").HasColumnType("int").IsRequired();
+            Property(x => x.CharacterTertiaryArchtypeId).HasColumnName(@"CharacterTertiaryArchtypeId").HasColumnType("int").IsOptional();
 
             // Foreign keys
-            HasOptional(a => a.CharacterSecondaryArchtype).WithMany(b => b.Characters_CharacterSecondaryArchtypeId).HasForeignKey(c => c.CharacterSecondaryArchtypeId).WillCascadeOnDelete(false); // FK_Character_Secondary_Archtype
+            HasOptional(a => a.CharacterTertiaryArchtype).WithMany(b => b.Characters_CharacterTertiaryArchtypeId).HasForeignKey(c => c.CharacterTertiaryArchtypeId).WillCascadeOnDelete(false); // FK_Character_TertiaryArchtype
             HasOptional(a => a.Player).WithMany(b => b.Characters).HasForeignKey(c => c.CharacterPlayerId).WillCascadeOnDelete(false); // FK_Character_Player
-            HasRequired(a => a.CharacterPrimaryArchtype).WithMany(b => b.Characters_CharacterPrimaryArchtypeId).HasForeignKey(c => c.CharacterPrimaryArchtypeId).WillCascadeOnDelete(false); // FK_Character_Primary_Archtype
-            HasRequired(a => a.Race).WithMany(b => b.Characters).HasForeignKey(c => c.CharacterRaceId).WillCascadeOnDelete(false); // FK_Character_Race
+            HasRequired(a => a.CharacterPrimaryArchtype).WithMany(b => b.Characters_CharacterPrimaryArchtypeId).HasForeignKey(c => c.CharacterPrimaryArchtypeId).WillCascadeOnDelete(false); // FK_Character_PrimaryArchtype
+            HasRequired(a => a.CharacterSecondaryArchtype).WithMany(b => b.Characters_CharacterSecondaryArchtypeId).HasForeignKey(c => c.CharacterSecondaryArchtypeId).WillCascadeOnDelete(false); // FK_Character_SecondaryArchtype
+            HasMany(t => t.Unlocks).WithMany(t => t.Characters).Map(m =>
+            {
+                m.ToTable("CharacterUnlockList", "dbo");
+                m.MapLeftKey("CharacterId");
+                m.MapRightKey("UnlockId");
+            });
+            HasMany(t => t.Spells).WithMany(t => t.Characters).Map(m =>
+            {
+                m.ToTable("CharacterSpellMap", "dbo");
+                m.MapLeftKey("CharacterId");
+                m.MapRightKey("SpellId");
+            });
         }
     }
 

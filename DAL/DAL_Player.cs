@@ -12,10 +12,10 @@ namespace DAL
     public class DAL_Player : Repository<GnsEntities.Player>
     {
 
-        public List<PlayerIndexModel> GetAllPlayersAsIndexModel()
+        public List<PlayerIndexRowModel> GetAllPlayersAsIndexModel()
         {
             return GetAll().Select(p =>
-            new PlayerIndexModel()
+            new PlayerIndexRowModel()
             {
                 PlayerId = p.PlayerId,
                 PlayerName = p.PlayerName,
@@ -24,16 +24,16 @@ namespace DAL
             }).ToList();
         }
 
-        public PlayerEditModel GetPlayerEditModel(int id)
+        public PlayerModel GetPlayerEditModel(int id)
         {
             GnsEntities.Player player = GetByID(id);
-            return new PlayerEditModel()
+            return new PlayerModel()
             {
                 PlayerId = player.PlayerId,
                 PlayerName = player.PlayerName,
                 ActiveCharacterId = player.PlayerActiveCharacterId,
                 ActiveCharacterName = player.Character == null ? null : player.Character.CharacterName,
-                AvailableCharacters = player.Characters.Count == 0 ? null : player.Characters.Select(c => new IdAndName()
+                AvailableCharacters = player.Characters.Count == 0 ? null : player.Characters.Select(c => new ListPair()
                 {
                     Id = c.CharacterId,
                     Name = c.CharacterName
@@ -41,38 +41,21 @@ namespace DAL
             };
         }
 
-        public bool UpdatePlayerDetail(PlayerEditModel editModel)
+        public bool UpdatePlayerDetail(PlayerModel editModel)
         {
             GnsEntities.Player player = GetByID(editModel.PlayerId);
-
             player.PlayerName = editModel.PlayerName;
             player.PlayerActiveCharacterId = editModel.ActiveCharacterId;
             return Update(player);
         }
 
-        public bool CreateNewPlayer(PlayerCreateModel createModel)
+        public bool CreateNewPlayer(PlayerModel createModel)
         {
             GnsEntities.Player player = new GnsEntities.Player()
             {
                 PlayerName = createModel.PlayerName
             };
             return Insert(player);
-        }
-
-        public List<CharacterIndexRowModel> GetPlayerCharacterIndex(int id)
-        {
-            return new Repository<GnsEntities.Player>().GetByID(id).Characters.Select(c => new CharacterIndexRowModel()
-            {
-                CharacterId = c.CharacterId,
-                CharacterName = c.CharacterName,
-                CharacterActivePrimaryArchtypeId = c.CharacterPrimaryArchtypeId,
-                CharacterActivePrimaryArchtypeName = c.CharacterPrimaryArchtype.ArchtypeName,
-                CharacterActiveSecondaryArchtypeId = c.CharacterSecondaryArchtypeId,
-                CharacterActiveSecondaryArchtypeName = c.CharacterSecondaryArchtype.ArchtypeName,
-                CharacterActiveRaceId = c.CharacterRaceId,
-                CharacterActiveRaceName = c.Race.RaceName
-            }).ToList();
-
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Models.ArchtypeIndexModel>
+﻿@model IEnumerable<Models.ArchtypeIndexRowModel>
 
 @{
     ViewBag.Title = "Index";
@@ -18,6 +18,9 @@
             @Html.DisplayNameFor(model => model.ArchtypeName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ArchtypeRankName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ArchtypeShortDescription)
         </th>
         <th></th>
@@ -32,12 +35,14 @@
             @Html.DisplayFor(modelItem => item.ArchtypeName)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.ArchtypeRankName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ArchtypeShortDescription)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { Id = item.ArchtypeId }) |
+            @Html.ActionLink("Details", "Details", new { Id = item.ArchtypeId }) 
         </td>
     </tr>
 }

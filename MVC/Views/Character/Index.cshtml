@@ -1,69 +1,46 @@
 ﻿@model Models.CharacterIndexModel
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Player Index</h2>
 
-<div class="panel panel-default">
-    <div class="panel-content">
-        <table class="table table-responsive">
-            <thead>
-                @Html.HiddenFor(model => model.PlayerId);
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterActiveRaceName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterActivePrimaryArchtypeName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterActiveSecondaryArchtypeName)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.CharacterIndex)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CharacterId)
-                        </td>
-                        <td>
-                            @Html.ActionLink(item.CharacterName, "Details", "Character", new { Id = item.CharacterId }, null)
-                        </td>
-                        <td>
-                            @Html.ActionLink(item.CharacterActiveRaceName, "Details", "Race", new { Id = item.CharacterActiveRaceId }, null)
-                        </td>
-                        <td>
-                            @Html.ActionLink(item.CharacterActivePrimaryArchtypeName, "Details", "Archtype", new { Id = item.CharacterActivePrimaryArchtypeId }, null)
-                        </td>
-                        <td>
-                            @Html.ActionLink(item.CharacterActiveSecondaryArchtypeName, "Details", "Archtype", new { Id = item.CharacterActiveSecondaryArchtypeId }, null)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { Id = item.CharacterId })
-                        </td>
-                    </tr>
-                }
+<p>
+    @Html.ActionLink("Create New", "Create", new { Id = Model.PlayerId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterActivePrimaryArchtypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterActiveSecondaryArchtypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CharacterIndex[0].CharacterActiveTertiaryArchtypeName)
+        </th>
+        <th></th>
+    </tr>
 
-            </tbody>
-        </table>
-        <div class="form-horizontal clearfix">
-            <div class="form-group">
+    @foreach (var item in Model.CharacterIndex)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterActivePrimaryArchtypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterActiveSecondaryArchtypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterActiveTertiaryArchtypeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { Id =item.CharacterId }) |
+                @Html.ActionLink("Details", "Details", new { Id = item.CharacterId }) 
+            </td>
+        </tr>
+    }
 
-                <div class="col-md-1 pull-right">
-                    <input type="button" class="btn btn-default" value="Create" onclick="location.href='@Url.Action("Create","Character", Model.PlayerId)'" />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+</table>

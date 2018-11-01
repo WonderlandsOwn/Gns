@@ -5,12 +5,14 @@
     [BonusStrength]     INT NOT NULL,
     [BonusAgility]      INT NOT NULL,
     [BonusIntellect]    INT NOT NULL,
-    [BonusFortitude]    INT NOT NULL,
-    [BonusEndurance]    INT NOT NULL,
-    [BonusConstitution] INT NOT NULL,
-    CONSTRAINT [PK_ArchtypeBonus] PRIMARY KEY CLUSTERED ([ArchtypeId] ASC),
-    CONSTRAINT [FK_ArchtypeBonus_Archtype] FOREIGN KEY ([ArchtypeId]) REFERENCES [dbo].[Archtype] ([ArchtypeId])
+    [BonusBlock]    INT NOT NULL,
+    [BonusDodge]    INT NOT NULL,
+    [BonusResist] INT NOT NULL,
+    CONSTRAINT [PK_RaceBonus] PRIMARY KEY CLUSTERED ([ArchtypeId] ASC),
+    CONSTRAINT [FK_RaceBonus_Race] FOREIGN KEY ([ArchtypeId]) REFERENCES [dbo].[Archtype] ([ArchtypeId])
 );
+
+
 
 
 

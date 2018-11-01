@@ -1,4 +1,4 @@
-﻿@model Models.PlayerEditModel
+﻿@model Models.PlayerModel
 
 @{
     ViewBag.Title = "Edit";
@@ -15,7 +15,7 @@
         <h4>PlayerEditModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        @Html.HiddenFor(model => model.PlayerId)
         <div class="form-group">
             @Html.LabelFor(model => model.PlayerName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -28,9 +28,9 @@
             @Html.LabelFor(model => model.ActiveCharacterName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @if (Model != null && Model.AvailableCharacters != null)
+                @if (Model != null && Model.AvailableCharacters.Count > 1)
                 {
-                    @Html.ListBoxFor(model => model.ActiveCharacterId, new SelectList(Model.AvailableCharacters, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.ActiveCharacterId, new SelectList(Model.AvailableCharacters, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ActiveCharacterId, "", new { @class = "text-danger" })
                 }
                 else

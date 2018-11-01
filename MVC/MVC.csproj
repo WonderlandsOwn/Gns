@@ -158,7 +158,6 @@
     <Compile Include="Controllers\CharacterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
-    <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,15 +202,13 @@
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Player\Create.cshtml" />
     <Content Include="Views\Player\Edit.cshtml" />
-    <Content Include="Views\Character\Index.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Character\Create.cshtml" />
-    <Content Include="Views\Race\Create.cshtml" />
-    <Content Include="Views\Archtype\Create.cshtml" />
+    <Content Include="Views\Character\Index.cshtml" />
+    <Content Include="Views\Character\Details.cshtml" />
     <Content Include="Views\Archtype\Index.cshtml" />
-    <Content Include="Views\Race\Index.cshtml" />
+    <Content Include="Views\Archtype\Details.cshtml" />
+    <Content Include="Views\Character\Create.cshtml" />
+    <Content Include="Views\Archtype\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

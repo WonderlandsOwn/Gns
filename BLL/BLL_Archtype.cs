@@ -17,19 +17,41 @@ namespace BLL
             ArchtypeRepository = new DAL_Archtype();
         }
 
-        public List<ArchtypeIndexModel> GetCompleteArchtypeIndex()
+        public BonusModel GetArchTypeBonus (int id)
+        {
+            return ArchtypeRepository.GetBonus(id);
+        }
+        public List<ArchtypeIndexRowModel> GetCompleteArchtypeIndex()
         {
             return ArchtypeRepository.GetAllArchtypeAsIndexModel();
         }
 
-        public List<IdAndName> GetBasicList()
+        public List<ArchtypeIndexRowModel> GetArchtypeIndexByRank(int rank)
         {
-            return ArchtypeRepository.GetAllAsIdAndName();
+            return ArchtypeRepository.GetArchtypeIndexByRank(rank);
+        }
+        public List<ListPair> GetBasicList()
+        {
+            return ArchtypeRepository.GetAllListPair();
         }
 
+        public List<ListPair> GetBasicList(int rank)
+        {
+            return ArchtypeRepository.GetArchtypeListPairsByRank(rank);
+        }
         public bool CreateArchtype(ArchtypeCreateModel createModel)
         {
             return ArchtypeRepository.CreateNewArchtype(createModel);
+        }
+
+        public List<ListPair> GetAvailableRanks()
+        {
+            return ArchtypeRepository.GetRanks();
+        }
+
+        public ArchtypeDetailModel GetArchtypeDetails(int id)
+        {
+            return ArchtypeRepository.GetDetailModel(id);
         }
         //pending spell list
 

@@ -61,19 +61,22 @@
     <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\RaceSpellList.sql" />
-    <Build Include="dbo\Tables\RaceDetail.sql" />
-    <Build Include="dbo\Tables\CharacterStatus.sql" />
-    <Build Include="dbo\Tables\ArchtypeSpellList.sql" />
-    <Build Include="dbo\Tables\ArchtypeDetail.sql" />
     <Build Include="dbo\Tables\Spell.sql" />
-    <Build Include="dbo\Tables\Race.sql" />
     <Build Include="dbo\Tables\Player.sql" />
     <Build Include="dbo\Tables\Character.sql" />
     <Build Include="dbo\Tables\Archtype.sql" />
-    <Build Include="dbo\Tables\PlayerDeck.sql" />
     <Build Include="dbo\Tables\ArchtypeBonus.sql" />
     <Build Include="dbo\Tables\SpellDetail.sql" />
-    <Build Include="dbo\Tables\RaceBonus.sql" />
+    <Build Include="dbo\Tables\Unlock.sql" />
+    <Build Include="dbo\Tables\Rarity.sql" />
+    <Build Include="dbo\Tables\Rank.sql" />
+    <Build Include="dbo\Tables\CharacterUnlockList.sql" />
+    <Build Include="dbo\Tables\CharacterSpellMap.sql" />
+    <Build Include="dbo\Tables\CharacterSpell.sql" />
+    <Build Include="dbo\Tables\CharacterBonus.sql" />
+    <Build Include="dbo\Tables\ArchtypeSpellList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="dbo\Seed.sql" />
   </ItemGroup>
 </Project>

@@ -20,15 +20,11 @@ namespace GnsEntities
     public class Player
     {
         public int PlayerId { get; set; } // PlayerId (Primary key)
-        public string PlayerName { get; set; } // PlayerName (length: 50)
+        public string PlayerName { get; set; } // PlayerName (length: 24)
         public int? PlayerActiveCharacterId { get; set; } // PlayerActiveCharacterID
 
         // Reverse navigation
 
-        /// <summary>
-        /// Parent (One-to-One) Player pointed by [PlayerDeck].[PlayerId] (FK_PlayerDeck_Player)
-        /// </summary>
-        public virtual PlayerDeck PlayerDeck { get; set; } // PlayerDeck.FK_PlayerDeck_Player
         /// <summary>
         /// Child Characters where [Character].[CharacterPlayerId] point to this entity (FK_Character_Player)
         /// </summary>

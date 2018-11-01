@@ -1,0 +1,119 @@
+﻿@model Models.ArchtypeDetailModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>ArchtypeDetailModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeRankName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeRankName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusHealth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusHealth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusStamina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusStamina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusConcentration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusConcentration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusStrength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusStrength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusAgility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusAgility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusIntellect)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusIntellect)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusBlock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusBlock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusDodge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusDodge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArchtypeBonus.BonusResist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArchtypeBonus.BonusResist)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

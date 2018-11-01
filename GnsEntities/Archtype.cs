@@ -20,36 +20,53 @@ namespace GnsEntities
     public class Archtype
     {
         public int ArchtypeId { get; set; } // ArchtypeId (Primary key)
-        public string ArchtypeName { get; set; } // ArchtypeName (length: 50)
+        public int? ArchtypeRankId { get; set; } // ArchtypeRankId
+        public string ArchtypeName { get; set; } // ArchtypeName (length: 24)
+        public string ArchtypeShortDescription { get; set; } // ArchtypeShortDescription (length: 50)
+        public string ArchtypeDescription { get; set; } // ArchtypeDescription (length: 150)
+        public int? ArchtypeUnlockId { get; set; } // ArchtypeUnlockId
 
         // Reverse navigation
 
         /// <summary>
-        /// Parent (One-to-One) Archtype pointed by [ArchtypeBonus].[ArchtypeId] (FK_ArchtypeBonus_Archtype)
+        /// Parent (One-to-One) Archtype pointed by [ArchtypeBonus].[ArchtypeId] (FK_RaceBonus_Race)
         /// </summary>
-        public virtual ArchtypeBonu ArchtypeBonu { get; set; } // ArchtypeBonus.FK_ArchtypeBonus_Archtype
+        public virtual ArchtypeBonu ArchtypeBonu { get; set; } // ArchtypeBonus.FK_RaceBonus_Race
         /// <summary>
-        /// Parent (One-to-One) Archtype pointed by [ArchtypeDetail].[ArchtypeId] (FK_ArchtypeDetail_ArchType)
+        /// Child Characters where [Character].[CharacterPrimaryArchtypeId] point to this entity (FK_Character_PrimaryArchtype)
         /// </summary>
-        public virtual ArchtypeDetail ArchtypeDetail { get; set; } // ArchtypeDetail.FK_ArchtypeDetail_ArchType
+        public virtual System.Collections.Generic.ICollection<Character> Characters_CharacterPrimaryArchtypeId { get; set; } // Character.FK_Character_PrimaryArchtype
         /// <summary>
-        /// Child ArchtypeSpellLists where [ArchtypeSpellList].[ArchtypeId] point to this entity (FK_ArchtypeSpellList_Archtype)
+        /// Child Characters where [Character].[CharacterSecondaryArchtypeId] point to this entity (FK_Character_SecondaryArchtype)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<ArchtypeSpellList> ArchtypeSpellLists { get; set; } // ArchtypeSpellList.FK_ArchtypeSpellList_Archtype
+        public virtual System.Collections.Generic.ICollection<Character> Characters_CharacterSecondaryArchtypeId { get; set; } // Character.FK_Character_SecondaryArchtype
         /// <summary>
-        /// Child Characters where [Character].[CharacterPrimaryArchtypeId] point to this entity (FK_Character_Primary_Archtype)
+        /// Child Characters where [Character].[CharacterTertiaryArchtypeId] point to this entity (FK_Character_TertiaryArchtype)
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Character> Characters_CharacterPrimaryArchtypeId { get; set; } // Character.FK_Character_Primary_Archtype
+        public virtual System.Collections.Generic.ICollection<Character> Characters_CharacterTertiaryArchtypeId { get; set; } // Character.FK_Character_TertiaryArchtype
         /// <summary>
-        /// Child Characters where [Character].[CharacterSecondaryArchtypeId] point to this entity (FK_Character_Secondary_Archtype)
+        /// Child Spells (Many-to-Many) mapped by table [ArchtypeSpellList]
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Character> Characters_CharacterSecondaryArchtypeId { get; set; } // Character.FK_Character_Secondary_Archtype
+        public virtual System.Collections.Generic.ICollection<Spell> Spells { get; set; } // Many to many mapping
+
+        // Foreign keys
+
+        /// <summary>
+        /// Parent Rank pointed by [Archtype].([ArchtypeRankId]) (FK_Archtype_Rank)
+        /// </summary>
+        public virtual Rank Rank { get; set; } // FK_Archtype_Rank
+
+        /// <summary>
+        /// Parent Unlock pointed by [Archtype].([ArchtypeUnlockId]) (FK_Archtype_Unlock)
+        /// </summary>
+        public virtual Unlock Unlock { get; set; } // FK_Archtype_Unlock
 
         public Archtype()
         {
-            ArchtypeSpellLists = new System.Collections.Generic.List<ArchtypeSpellList>();
             Characters_CharacterPrimaryArchtypeId = new System.Collections.Generic.List<Character>();
             Characters_CharacterSecondaryArchtypeId = new System.Collections.Generic.List<Character>();
+            Characters_CharacterTertiaryArchtypeId = new System.Collections.Generic.List<Character>();
+            Spells = new System.Collections.Generic.List<Spell>();
         }
     }
 

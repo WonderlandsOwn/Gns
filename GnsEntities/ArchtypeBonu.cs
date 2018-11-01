@@ -22,19 +22,20 @@ namespace GnsEntities
         public int ArchtypeId { get; set; } // ArchtypeId (Primary key)
         public int BonusHealth { get; set; } // BonusHealth
         public int BonusStamina { get; set; } // BonusStamina
+        public int BonusConcentration { get; set; } // BonusConcentration
         public int BonusStrength { get; set; } // BonusStrength
         public int BonusAgility { get; set; } // BonusAgility
         public int BonusIntellect { get; set; } // BonusIntellect
-        public int BonusFortitude { get; set; } // BonusFortitude
-        public int BonusEndurance { get; set; } // BonusEndurance
-        public int BonusConstitution { get; set; } // BonusConstitution
+        public int BonusBlock { get; set; } // BonusBlock
+        public int BonusDodge { get; set; } // BonusDodge
+        public int BonusResist { get; set; } // BonusResist
 
         // Foreign keys
 
         /// <summary>
-        /// Parent Archtype pointed by [ArchtypeBonus].([ArchtypeId]) (FK_ArchtypeBonus_Archtype)
+        /// Parent Archtype pointed by [ArchtypeBonus].([ArchtypeId]) (FK_RaceBonus_Race)
         /// </summary>
-        public virtual Archtype Archtype { get; set; } // FK_ArchtypeBonus_Archtype
+        public virtual Archtype Archtype { get; set; } // FK_RaceBonus_Race
     }
 
 }

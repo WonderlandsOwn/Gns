@@ -30,7 +30,21 @@ namespace GnsEntities
             HasKey(x => x.ArchtypeId);
 
             Property(x => x.ArchtypeId).HasColumnName(@"ArchtypeId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.ArchtypeName).HasColumnName(@"ArchtypeName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.ArchtypeRankId).HasColumnName(@"ArchtypeRankId").HasColumnType("int").IsOptional();
+            Property(x => x.ArchtypeName).HasColumnName(@"ArchtypeName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(24);
+            Property(x => x.ArchtypeShortDescription).HasColumnName(@"ArchtypeShortDescription").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.ArchtypeDescription).HasColumnName(@"ArchtypeDescription").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(150);
+            Property(x => x.ArchtypeUnlockId).HasColumnName(@"ArchtypeUnlockId").HasColumnType("int").IsOptional();
+
+            // Foreign keys
+            HasOptional(a => a.Rank).WithMany(b => b.Archtypes).HasForeignKey(c => c.ArchtypeRankId).WillCascadeOnDelete(false); // FK_Archtype_Rank
+            HasOptional(a => a.Unlock).WithMany(b => b.Archtypes).HasForeignKey(c => c.ArchtypeUnlockId).WillCascadeOnDelete(false); // FK_Archtype_Unlock
+            HasMany(t => t.Spells).WithMany(t => t.Archtypes).Map(m =>
+            {
+                m.ToTable("ArchtypeSpellList", "dbo");
+                m.MapLeftKey("ArchtypeId");
+                m.MapRightKey("SpellId");
+            });
         }
     }
 

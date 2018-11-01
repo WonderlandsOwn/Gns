@@ -30,6 +30,7 @@ namespace GnsEntities
             HasKey(x => x.SpellId);
 
             Property(x => x.SpellId).HasColumnName(@"SpellId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.SpellRank).HasColumnName(@"SpellRank").HasColumnType("nchar").IsOptional().IsFixedLength().HasMaxLength(10);
             Property(x => x.SpellName).HasColumnName(@"SpellName").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
         }
     }

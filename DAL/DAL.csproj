@@ -52,8 +52,8 @@
     <Compile Include="DAL_Character.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="DAL_Player.cs" />
+    <Compile Include="Parsers\BonusModelParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DAL_Race.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>

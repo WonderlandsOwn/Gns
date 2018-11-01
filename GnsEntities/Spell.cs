@@ -20,6 +20,7 @@ namespace GnsEntities
     public class Spell
     {
         public int SpellId { get; set; } // SpellId (Primary key)
+        public string SpellRank { get; set; } // SpellRank (length: 10)
         public string SpellName { get; set; } // SpellName (length: 50)
 
         // Reverse navigation
@@ -29,18 +30,18 @@ namespace GnsEntities
         /// </summary>
         public virtual SpellDetail SpellDetail { get; set; } // SpellDetail.FK_SpellDetail_Spell
         /// <summary>
-        /// Child ArchtypeSpellLists where [ArchtypeSpellList].[ArchtypeId] point to this entity (FK_ArchtypeSpellList_Spell)
+        /// Child Archtypes (Many-to-Many) mapped by table [ArchtypeSpellList]
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<ArchtypeSpellList> ArchtypeSpellLists { get; set; } // ArchtypeSpellList.FK_ArchtypeSpellList_Spell
+        public virtual System.Collections.Generic.ICollection<Archtype> Archtypes { get; set; } // Many to many mapping
         /// <summary>
-        /// Child Races (Many-to-Many) mapped by table [RaceSpellList]
+        /// Child Characters (Many-to-Many) mapped by table [CharacterSpellMap]
         /// </summary>
-        public virtual System.Collections.Generic.ICollection<Race> Races { get; set; } // Many to many mapping
+        public virtual System.Collections.Generic.ICollection<Character> Characters { get; set; } // Many to many mapping
 
         public Spell()
         {
-            ArchtypeSpellLists = new System.Collections.Generic.List<ArchtypeSpellList>();
-            Races = new System.Collections.Generic.List<Race>();
+            Characters = new System.Collections.Generic.List<Character>();
+            Archtypes = new System.Collections.Generic.List<Archtype>();
         }
     }
 

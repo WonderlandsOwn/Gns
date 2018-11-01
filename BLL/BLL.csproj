@@ -51,7 +51,6 @@
     <Compile Include="BLL_Archtype.cs" />
     <Compile Include="BLL_Character.cs" />
     <Compile Include="BLL_Player.cs" />
-    <Compile Include="BLL_Race.cs" />
     <Compile Include="BLL_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

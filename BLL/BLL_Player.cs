@@ -17,22 +17,22 @@ namespace BLL
             PlayerRepository = new DAL_Player();
         }
 
-        public List<PlayerIndexModel>GetCompletePlayerIndex()
+        public List<PlayerIndexRowModel>GetCompletePlayerIndex()
         {
             return PlayerRepository.GetAllPlayersAsIndexModel();
         }
 
-        public bool CreatePlayer(PlayerCreateModel createModel)
+        public bool CreatePlayer(PlayerModel createModel)
         {
             return PlayerRepository.CreateNewPlayer(createModel);
         }
 
-        public PlayerEditModel GetPlayerForEdit(int id)
+        public PlayerModel GetPlayerForEdit(int id)
         {
             return PlayerRepository.GetPlayerEditModel(id);
         }
 
-        public bool EditPlayer(PlayerEditModel editModel)
+        public bool EditPlayer(PlayerModel editModel)
         {
             return PlayerRepository.UpdatePlayerDetail(editModel);
         }

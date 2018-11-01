@@ -30,7 +30,7 @@ namespace GnsEntities
             HasKey(x => x.PlayerId);
 
             Property(x => x.PlayerId).HasColumnName(@"PlayerId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.PlayerName).HasColumnName(@"PlayerName").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
+            Property(x => x.PlayerName).HasColumnName(@"PlayerName").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(24);
             Property(x => x.PlayerActiveCharacterId).HasColumnName(@"PlayerActiveCharacterID").HasColumnType("int").IsOptional();
 
             // Foreign keys
